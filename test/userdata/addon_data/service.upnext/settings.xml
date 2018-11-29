@@ -1,0 +1,15 @@
+<settings>
+    <setting id="autoPlayMode" value="1" />
+    <setting id="autoPlaySeasonTime" value="30" />
+    <setting id="developerMode" value="false" />
+    <setting id="disableNextUp" value="false" />
+    <setting id="enablePlaylist" value="true" />
+    <setting id="includeWatched" value="false" />
+    <setting id="logLevel" value="0" />
+    <setting id="playedInARow" value="3" />
+    <setting id="shortPlayLength" value="10" />
+    <setting id="shortPlayMode" value="false" />
+    <setting id="shortPlayNotification" value="true" />
+    <setting id="simpleMode" value="1" />
+    <setting id="windowMode" value="0" />
+</settings>

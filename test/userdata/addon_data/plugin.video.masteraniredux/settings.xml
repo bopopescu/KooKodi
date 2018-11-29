@@ -1,0 +1,25 @@
+<settings>
+    <setting id="anime.lastvisited" value="64" />
+    <setting id="autoplay.enabled" value="false" />
+    <setting id="autoplay.maxquality" value="1080" />
+    <setting id="autoplay.subdub" value="Sub" />
+    <setting id="host.aika" value="true" />
+    <setting id="host.drive.g" value="true" />
+    <setting id="host.mp4upload" value="true" />
+    <setting id="host.mystream" value="true" />
+    <setting id="host.openload" value="true" />
+    <setting id="host.rapidvideo" value="true" />
+    <setting id="host.stream.moe" value="true" />
+    <setting id="host.streamango" value="true" />
+    <setting id="host.tiwikiwi" value="true" />
+    <setting id="host.vidstreaming" value="true" />
+    <setting id="host.youtube" value="true" />
+    <setting id="indicators.alt" value="1" />
+    <setting id="kitsu.email" value="" />
+    <setting id="kitsu.password" value="" />
+    <setting id="track.type" value="Kitsu" />
+    <setting id="track.yesno" value="false" />
+    <setting id="trakt.refresh" value="" />
+    <setting id="trakt.token" value="" />
+    <setting id="upgrade.warning" value="shown" />
+</settings>
