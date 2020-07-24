@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 '''
-    Masterani Redux Add-on
+    Mainani Redux Add-on
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@ import xbmc
 from resources.lib.modules import cache
 from resources.lib.modules import client
 from resources.lib.modules import control
-from resources.lib.modules import masterani
+from resources.lib.modules import mainani
 from resources.lib.modules import views
 from resources.lib.modules import watched
 from resources.lib.modules import workers
@@ -34,8 +34,8 @@ from resources.lib.modules.watched import Watched
 class Indexer:
     def __init__(self):
         self.list = []
-        self.posterurl = "http://cdn.masterani.me/poster/%s"
-        self.fanarturl = "http://cdn.masterani.me/wallpaper/0/%s"
+        self.posterurl = "http://cdn.mainani.me/poster/%s"
+        self.fanarturl = "http://cdn.mainani.me/wallpaper/0/%s"
 
     def get(self):
         try:
@@ -72,7 +72,7 @@ class Indexer:
 
     def get_recent(self):
         try:
-            result = client.request("http://www.masterani.me/api/releases/detailed")
+            result = client.request("http://www.mainani.me/api/releases/detailed")
         except:
             return
 
@@ -94,7 +94,7 @@ class Indexer:
             premiered = e['official_air_date']
             plot = e['description']
 			
-            base_link = "https://masterani.me/anime/watch/"
+            base_link = "https://mainani.me/anime/watch/"
             episode_link = base_link + anime_link + "/" + episode
 			
             self.list.append(

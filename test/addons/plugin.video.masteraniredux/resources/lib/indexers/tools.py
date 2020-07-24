@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 '''
-    Masterani Redux Add-on
+    Mainani Redux Add-on
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -22,9 +22,9 @@ import sys
 from resources.lib.modules import cache
 from resources.lib.modules import control
 
-# masterani_url = "http://www.masterani.me/"
+# mainani_url = "http://www.mainani.me/"
 from resources.lib.modules import favorites
-from resources.lib.modules import masterani
+from resources.lib.modules import mainani
 
 
 def tools():

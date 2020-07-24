@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 '''
-    Masterani Redux add-on
+    Mainani Redux add-on
 
     this program is free software: you can redistribute it and/or modify
     it under the terms of the gnu general public license as published by
@@ -27,7 +27,7 @@ import re
 from resources.lib.modules import cache
 from resources.lib.modules import client
 from resources.lib.modules import control
-from resources.lib.modules import masterani
+from resources.lib.modules import mainani
 from resources.lib.modules.control import progressDialog
 from resources.lib.modules.watched import Watched
 from resources.lib.modules import kitsu
@@ -132,7 +132,7 @@ def play(anime_id, episode_id):
     episode_number = episode_link.split("/", 6)[6]
 	
     l1 = "Fetching video."
-    progressDialog.create(heading="Masterani Redux", line1="Fetching video.")
+    progressDialog.create(heading="Mainani Redux", line1="Fetching video.")
     progressDialog.update(0, line1=l1, line3="Loading hosts.")
     
     hosts = getlinks(episode_link)[0]   
@@ -140,7 +140,7 @@ def play(anime_id, episode_id):
     #linkforcover = getcover(episode_link)
 
     if hosts is None:
-        xbmcgui.Dialog().ok("Masterani Redux", "Something went wrong.", "Please try again later.")
+        xbmcgui.Dialog().ok("Mainani Redux", "Something went wrong.", "Please try again later.")
         return
 
     #Remove Disabled Hosts
@@ -256,7 +256,7 @@ def play(anime_id, episode_id):
             
     if len(hostlist) is 0:
         progressDialog.close()
-        xbmcgui.Dialog().notification("Masterani Redux", "No supported hosts found.")
+        xbmcgui.Dialog().notification("Mainani Redux", "No supported hosts found.")
         return
 
     if 'false' in autoplay:
@@ -264,7 +264,7 @@ def play(anime_id, episode_id):
     else:
         if len(hostlist) is 0:
             progressDialog.close()
-            xbmcgui.Dialog().notification("Masterani Redux", "No hosts found for autoplay. Change addon settings and try again.")
+            xbmcgui.Dialog().notification("Mainani Redux", "No hosts found for autoplay. Change addon settings and try again.")
             hostDialog = -1
         else:
             hostDialog = autoplayHost
@@ -281,14 +281,14 @@ def play(anime_id, episode_id):
             hostquality = autovids[hostDialog]['quality']
             embed_id = autovids[hostDialog]['embed_id']   
         except:
-            xbmcgui.Dialog().notification("Masterani Redux", "You have attempted all the hosts")
+            xbmcgui.Dialog().notification("Mainani Redux", "You have attempted all the hosts")
     else:        
         hostname = videos[hostDialog]['name']		
         hostlink = videos[hostDialog]['url']
         hostquality = videos[hostDialog]['quality']
         embed_id = videos[hostDialog]['embed_id']
 	
-    c = cache.get(masterani.get_anime_details, 3, anime_id)
+    c = cache.get(mainani.get_anime_details, 3, anime_id)
     syn = c['plot'].encode('utf-8')
     print syn
     start_date = c['premiered']
@@ -321,14 +321,14 @@ class MAPlayer(xbmc.Player):
         item = control.item(path=url)
 
         try:
-            c = cache.get(masterani.get_anime_details, 3, self.anime_id)
+            c = cache.get(mainani.get_anime_details, 3, self.anime_id)
 
             ctype = c['type']
             ctype = 'movie' if int(ctype) is 2 else 'episode'
 
             tvshowtitle = c['title']
             poster = c['poster']
-            coverlink = "http://cdn.masterani.me/poster/" + poster
+            coverlink = "http://cdn.mainani.me/poster/" + poster
             print coverlink
 
             item.setArt({'icon': coverlink, 'thumb': coverlink, 'poster': coverlink, 'tvshow.poster': coverlink, 'season.poster': coverlink})

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 '''
-    Masterani Redux Add-on
+    Mainani Redux Add-on
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -32,7 +32,7 @@ from resources.lib.modules import control
 def get_anime_details(anime_id):
     # print "Getting anime details: %s" % url
     try:
-        result = client.request("http://www.masterani.me/api/anime/%s/detailed" % anime_id, timeout=60)
+        result = client.request("http://www.mainani.me/api/anime/%s/detailed" % anime_id, timeout=60)
         result = json.loads(result)
 
         info = result['info']

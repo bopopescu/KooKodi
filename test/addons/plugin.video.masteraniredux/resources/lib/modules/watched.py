@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 '''
-    Masterani Redux Add-on
+    Mainani Redux Add-on
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -23,7 +23,7 @@ except:
 
 from resources.lib.modules import cache
 from resources.lib.modules import control
-from resources.lib.modules import masterani
+from resources.lib.modules import mainani
 
 
 class Watched:
@@ -41,7 +41,7 @@ class Watched:
         try:
             if int(episode_id) == -999:
                 if unmark is None:
-                    result = cache.get(masterani.get_anime_details, 1, anime_id)
+                    result = cache.get(mainani.get_anime_details, 1, anime_id)
                     episodes = result['episodes'] if 'episodes' in result else ''
                     for e in episodes:
                         self.dbcur.execute("INSERT OR IGNORE INTO watched VALUES (?, ?)", (anime_id, e))

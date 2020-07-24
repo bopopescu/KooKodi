@@ -171,7 +171,7 @@ class source:
 				links = debrid_links + links
 
 
-			# master list of hosts ResolveURL and placenta itself can resolve
+			# main list of hosts ResolveURL and placenta itself can resolve
 			# we'll check against this list to not waste connections on unsupported hosts
 			hostDict = hostDict + hostprDict
 			

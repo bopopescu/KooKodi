@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 '''
-    Masterani Redux Add-on
+    Mainani Redux Add-on
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -22,9 +22,9 @@ import sys
 from resources.lib.modules import cache
 from resources.lib.modules import control
 
-# masterani_url = "http://www.masterani.me/"
+# mainani_url = "http://www.mainani.me/"
 from resources.lib.modules import favorites
-from resources.lib.modules import masterani
+from resources.lib.modules import mainani
 from resources.lib.modules import watched
 
 
@@ -33,7 +33,7 @@ def main_menu():
 
     if upgrade_warning is "":
         import xbmcgui
-        xbmcgui.Dialog().ok("Masterani Redux Warning",
+        xbmcgui.Dialog().ok("Mainani Redux Warning",
                                     " \n\nIt has come to our attention that the addon stopped working for some people. During our investigation in the matter,"
                                     " we found that security upgrades rendered Kodi 16 unable to fetch the required data.\n\n"
                                     "If the addon is unable to load anything, you are affected by this. Please update your Kodi to the latest version.")
@@ -89,7 +89,7 @@ def add_favorites():
 
 def add_last_visited(anime_id):
     try:
-        c = cache.get(masterani.get_anime_details, 8, anime_id)
+        c = cache.get(mainani.get_anime_details, 8, anime_id)
         
         plot = c['plot']
         premiered = c['premiered']
@@ -103,8 +103,8 @@ def add_last_visited(anime_id):
 
         item = control.item("Last Played: [I]%s[/I]" % (c['title']))
 
-        poster = "http://cdn.masterani.me/poster/%s" % c['poster']
-        fanart = "http://cdn.masterani.me/wallpaper/0/%s" % c['fanart'][0]
+        poster = "http://cdn.mainani.me/poster/%s" % c['poster']
+        fanart = "http://cdn.mainani.me/wallpaper/0/%s" % c['fanart'][0]
         item.setArt({'poster': poster})
         item.setProperty("Fanart_Image", fanart)
         item.setInfo(type='Video', infoLabels={
@@ -112,7 +112,7 @@ def add_last_visited(anime_id):
             'genre': genre, 'mediatype': 'tvshow' 
         })
         
-        ep1link = "https://masterani.me/anime/watch/" + c['showlink'] + "/1"    
+        ep1link = "https://mainani.me/anime/watch/" + c['showlink'] + "/1"    
 
         episode_count = c['episode_count']        
         

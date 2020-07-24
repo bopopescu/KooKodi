@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 '''
-    Masterani Redux Add-on
+    Mainani Redux Add-on
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -21,7 +21,7 @@ import sys
 
 from resources.lib.modules import cache
 from resources.lib.modules import control
-from resources.lib.modules import masterani
+from resources.lib.modules import mainani
 from resources.lib.modules import views
 from resources.lib.modules import watched
 from resources.lib.modules.watched import Watched
@@ -31,9 +31,9 @@ class Indexer:
     def __init__(self):
         self.list = []
         self.duration = 0
-        self.posterurl = "http://cdn.masterani.me/poster/%s"
-        self.fanarturl = "http://cdn.masterani.me/wallpaper/0/%s"
-        self.thumbnailurl = "http://cdn.masterani.me/episodes/%s"
+        self.posterurl = "http://cdn.mainani.me/poster/%s"
+        self.fanarturl = "http://cdn.mainani.me/wallpaper/0/%s"
+        self.thumbnailurl = "http://cdn.mainani.me/episodes/%s"
         self.fanart = ''
 
     def get(self, url):
@@ -42,7 +42,7 @@ class Indexer:
         return self.list
 
     def get_episodes(self, anime_id):
-        animedata = cache.get(masterani.get_anime_details, 3, anime_id)
+        animedata = cache.get(mainani.get_anime_details, 3, anime_id)
 
         show_link = animedata['showlink']
         episodes = animedata['episodes']
@@ -78,7 +78,7 @@ class Indexer:
             if len(animedata['fanart']) > 0:
                 fanart = animedata['fanart'][random.randint(0, len(animedata['fanart']) - 1)]
 
-            base_link = "https://masterani.me/anime/watch/"
+            base_link = "https://mainani.me/anime/watch/"
             episode_link = base_link + show_link + "/" + episode_number
 			
             print episode_link

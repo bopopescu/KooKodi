@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 '''
-    Masterani Redux Add-on
+    Mainani Redux Add-on
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -27,7 +27,7 @@ from resources.lib.modules import cache
 from resources.lib.modules import client
 from resources.lib.modules import control
 from resources.lib.modules import favorites
-from resources.lib.modules import masterani
+from resources.lib.modules import mainani
 from resources.lib.modules import selectdialog
 from resources.lib.modules import trakt
 from resources.lib.modules import views
@@ -42,11 +42,11 @@ class Indexer:
         self.current_page = 1
         self.last_page = 1
         self.next_page_url = ""
-        self.posterurl = "http://cdn.masterani.me/poster/%s"
-        self.fanarturl = "http://cdn.masterani.me/wallpaper/0/%s"
-        self.filterurl = "http://www.masterani.me/api/anime/filter?"
+        self.posterurl = "http://cdn.mainani.me/poster/%s"
+        self.fanarturl = "http://cdn.mainani.me/wallpaper/0/%s"
+        self.filterurl = "http://www.mainani.me/api/anime/filter?"
 
-    #""https://www.masterani.me/api/anime/filter?genres=&order=title&status=2&type=1"
+    #""https://www.mainani.me/api/anime/filter?genres=&order=title&status=2&type=1"
 
     def get(self, url):
         try:
@@ -131,10 +131,10 @@ class Indexer:
         result = client.request(url)
         result = json.loads(result)
 
-        self.list = masterani.extract_data_from_filter_list(result)
+        self.list = mainani.extract_data_from_filter_list(result)
 
         if len(self.list) is 0:
-            xbmcgui.Dialog().notification("Masterani Redux", "No anime found. Try other options.")
+            xbmcgui.Dialog().notification("Mainani Redux", "No anime found. Try other options.")
             return
 
         self.last_page = result['last_page']
@@ -164,7 +164,7 @@ class Indexer:
             root.main_menu()
 
     def get_popular(self):
-        result = client.request("https://www.masterani.me/api/anime/trending/today?detailed=1")
+        result = client.request("https://www.mainani.me/api/anime/trending/today?detailed=1")
         result = json.loads(result)
 
         print result
@@ -176,7 +176,7 @@ class Indexer:
         self.add_directory(self.list)
         
     def get_being_watched(self):
-        result = client.request("https://www.masterani.me/api/anime/trending/now?detailed=1")
+        result = client.request("https://www.mainani.me/api/anime/trending/now?detailed=1")
         result = json.loads(result)
         print result
         if len(result) is 0: return
@@ -194,18 +194,18 @@ class Indexer:
 
         if self.query is None or self.query is '': return
 
-        result = client.request("https://www.masterani.me/api/anime/filter?search=%s&order=relevance_desc&page=1&detailed=1" % self.query.replace(" ", "%20"))
+        result = client.request("https://www.mainani.me/api/anime/filter?search=%s&order=relevance_desc&page=1&detailed=1" % self.query.replace(" ", "%20"))
         try:
             result = json.loads(result)
         except:
-            xbmcgui.Dialog().notification("Masterani Redux", "No results for \"%s\"." % self.query)
+            xbmcgui.Dialog().notification("Mainani Redux", "No results for \"%s\"." % self.query)
 
         print result
 
         if len(result) is 0:
             return        
         
-        items = masterani.extract_data_from_filter_list(result)
+        items = mainani.extract_data_from_filter_list(result)
 
         #self.worker()
         self.add_directory(items)
@@ -250,7 +250,7 @@ class Indexer:
 
         for item in result:
             title = item['anime']['title']
-            url = self.masterani_url + "api/anime/" + str(item['anime']['id']) + "/detailed"
+            url = self.mainani_url + "api/anime/" + str(item['anime']['id']) + "/detailed"
             anime_id = item['anime']['id']
             self.list.append({'name': title, 'url': url, 'action': 'get_episodes', 'anime_id': anime_id})
 
@@ -259,9 +259,9 @@ class Indexer:
     def get_fanart(self, i):
         try:
             if self.list[i]['status'] is 0:
-                self.list[i].update(cache.get(masterani.get_anime_details, 150, self.list[i]['anime_id']))
+                self.list[i].update(cache.get(mainani.get_anime_details, 150, self.list[i]['anime_id']))
             elif self.list[i]['status'] != 0 or 'title' not in self.list[i]:
-                self.list[i].update(cache.get(masterani.get_anime_details, 12, self.list[i]['anime_id']))
+                self.list[i].update(cache.get(mainani.get_anime_details, 12, self.list[i]['anime_id']))
             return self.list
         except:
             return None
@@ -311,9 +311,9 @@ class Indexer:
                 # else:
                 
                 try:
-                    ep1link = "https://masterani.me/anime/watch/" + i['slug'] + "/1"
+                    ep1link = "https://mainani.me/anime/watch/" + i['slug'] + "/1"
                 except:
-                    ep1link = "https://masterani.me/anime/watch/" + i['showlink'] + "/1"
+                    ep1link = "https://mainani.me/anime/watch/" + i['showlink'] + "/1"
                     
                 episode = len(i['episodes']) if 'episodes' in i else 0
                 try:
